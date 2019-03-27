@@ -1,5 +1,7 @@
 package ru.avalon.java.dev.j10.labs.shapes;
 
+import ru.avalon.java.dev.j10.labs.factories.Randome;
+
 /**
  * Представление о треугольнике.
  * <p>
@@ -14,11 +16,64 @@ package ru.avalon.java.dev.j10.labs.shapes;
  *
  * @see <a href="https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B5%D1%83%D0%B3%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA">Треугольник</a>
  */
-public class Triangle {
+public class Triangle implements Polygon {
+    
 
     /*
      * TODO: Реализовать класс 'Triangle'
      * 1. Используйте наследование.
      * 2. Реализуйте все абстрактные методы.
      */
+    
+    private float bottomSide;       //основание
+    private float leftSide;         //левая сторона
+    private float rightSide;        //правая сторона
+    private float height;           //высота Треугольника
+    private float area;             //площадь Треугольника
+    private float perimeter;        //периметр Треугольника
+    private int angleRotation;      //угол поворота фигуры
+    
+    
+    public Triangle(float bottomSide, float leftSide, float rightSide){
+        this.bottomSide = bottomSide;
+        this.leftSide = leftSide;
+        this.rightSide = rightSide;
+        this.perimeter = bottomSide+leftSide+rightSide;  //определяем периметр Треугольника
+        
+
+        //вычисляем высоту по трем сторонам, по пормуле Герона
+        float halfPerimeter = perimeter / 2;
+        float firstPartOfFormula = halfPerimeter * (halfPerimeter - leftSide) * (halfPerimeter - rightSide) * (halfPerimeter - bottomSide);
+        height = (2/bottomSide) * (float) Math.sqrt(firstPartOfFormula);
+        
+        //вычисляем площадь Треугольника
+        area = (bottomSide * height) / 2;
+        
+        //задаем угол поворота фигуры
+        angleRotation = setRotation();
+        
+    }
+    
+    //задаем угол поворота фигуры
+    private int setRotation(){
+        Randome rand = new Randome(360);
+        int angle = rand.setNumber();
+        return angle;
+    }
+
+    @Override
+    public float getPerimeter() {
+        return perimeter;
+    }
+
+    @Override
+    public float getArea() {
+        return area;
+    }
+
+    @Override
+    public int getRotation() {
+        return 0;
+    }
+        
 }
