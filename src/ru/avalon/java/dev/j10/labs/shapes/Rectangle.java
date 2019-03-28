@@ -21,12 +21,12 @@ public class Rectangle implements Polygon {
      */
    
     private float topSide;      //верхняя сторона
-    private float bottomSide;   //нижняя сторона
     private float leftSide;     //левая сторона
-    private float rightSide;    //правая сторона
     private float area;         //площадь
     private float perimeter;    //периметр
     private int angleRotation; //угол поворота фигуры
+    private float centerX;     //координата Х центра фигуры
+    private float centerY;    //координата У центра фигуры
     
     /*  TODO (Проверка№1 ЛР№2)
         - Прямоугольник, как и любая фигура может иметь координаты на полскости и угол поворота!
@@ -35,8 +35,8 @@ public class Rectangle implements Polygon {
     */
     
     public Rectangle(float topSide, float leftSide){
-        this.topSide = this.bottomSide = topSide;
-        this.leftSide = this.rightSide = leftSide;
+        this.topSide = topSide;
+        this.leftSide = leftSide;
         
         //вычисляем периметр Прямоугольника
         perimeter = (topSide*2) +(leftSide*2);
@@ -46,8 +46,28 @@ public class Rectangle implements Polygon {
         
         //задаем угол поворота фигуры
         angleRotation = setRotation();
+        
+        //задаем координаты центра фигуры
+        centerX = setCoordinate();
+        centerY = setCoordinate();
     }
-    
+
+    //задаем значение координаты, которая вызывает метод
+    public float setCoordinate() {
+        Randome rand = new Randome(10);
+        float coordinate = rand.setNumber();
+        return coordinate;
+    }
+
+    @Override
+    public float getX() {
+        return centerX;
+    }
+
+    @Override
+    public float getY() {
+        return centerY;
+    }
     
     //задаем угол поворота фигуры
     private int setRotation(){

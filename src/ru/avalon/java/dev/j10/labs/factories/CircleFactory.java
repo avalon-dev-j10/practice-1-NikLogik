@@ -15,7 +15,7 @@ import ru.avalon.java.dev.j10.labs.shapes.Shape;
  */
 public class CircleFactory implements ShapeFactory{
     
-    Randome randNum = new Randome(90);
+    Randome randNum = new Randome(20);
     
     
     @Override

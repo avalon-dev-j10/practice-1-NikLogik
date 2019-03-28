@@ -17,14 +17,13 @@ import ru.avalon.java.dev.j10.labs.factories.ShapeFactory;
 public class Rhombus implements Polygon {
 
     private float topSide;      //1-я сторона Ромба
-    private float bottomSide;   //2-я сторона Ромба
-    private float leftSide;     //3-я сторона Ромба
-    private float rightSide;    //4-я сторона Ромба
     private float angleOfBottom;//угол между двумя сторонами Ромба
     private float height;       //высота Ромба
     private float area;         //площадь Ромба
     private float perimeter;    //периметр Ромба
     private int angleRotation; //угол поворота фигуры
+    private float centerX;     //координата Х центра фигуры
+    private float centerY;    //координата У центра фигуры
     
     /*  TODO (Проверка№1 ЛР№2)
         - Ромб, как и любая фигура может иметь координаты на полскости и угол поворота!
@@ -33,9 +32,9 @@ public class Rhombus implements Polygon {
     */
     
     public Rhombus(float topSide, float angleOfBottom){
-        this.topSide = this.bottomSide =  this.leftSide = this.rightSide = topSide; //инициализуем стороны Ромба
+        this.topSide = topSide; //инициализуем стороны Ромба
         //вычисляем периметр Ромба
-        perimeter = topSide*2;          
+        perimeter = topSide*4;          
         this.angleOfBottom = angleOfBottom;   //иницилизируем угол Ромба 
         this.height = setHeight(topSide, angleOfBottom);    //вычисляем высоту Ромба
         area = height * topSide;    //вычисляем площадь Ромба
@@ -44,6 +43,26 @@ public class Rhombus implements Polygon {
         /*  TODO (Проверка№1 ЛР№2)
             - Неправильно определен периметр ромба!!
         */
+        //задаем координаты центра фигуры
+        centerX = setCoordinate();
+        centerY = setCoordinate();
+    }
+    
+    //задаем значение координаты, которая вызывает метод
+    public float setCoordinate() {
+        Randome rand = new Randome(10);
+        float coordinate = rand.setNumber();
+        return coordinate;
+    }
+
+    @Override
+    public float getX() {
+        return centerX;
+    }
+
+    @Override
+    public float getY() {
+        return centerY;
     }
     
     @Override
@@ -55,10 +74,17 @@ public class Rhombus implements Polygon {
     public float getArea() {
         return area;
     }
+    
+    //задаем угол поворота фигуры
+    private int setRotation(){
+        Randome rand = new Randome(360);
+        int angle = rand.setNumber();
+        return angle;
+    }
 
     @Override
     public int getRotation() {       
-        return 0;
+        return angleRotation;
     }
     
     /*  TODO (Проверка№1 ЛР№2)
@@ -68,9 +94,9 @@ public class Rhombus implements Polygon {
     //вычисляет высоту Ромба
     private float setHeight(float a, float b) { 
         if(b>89){               //проверяем, чтобы угол был не 90 градусов
-            b = 89;
-        }else if(b<1){
-            b = 1;
+            b %= 90;
+        }else if(b<0){
+            b = 90 - b % 90;
         }
         height = a * (float)Math.sin(Math.toRadians(b));    //определяем высоту Ромба
         
@@ -82,13 +108,6 @@ public class Rhombus implements Polygon {
         */
         
         return height;
-    }
-    
-    //задаем угол поворота фигуры
-    private int setRotation(){
-        Randome rand = new Randome(360);
-        int angle = rand.setNumber();
-        return angle;
     }
 
 }

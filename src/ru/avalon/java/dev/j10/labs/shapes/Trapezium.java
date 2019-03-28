@@ -29,6 +29,8 @@ public class Trapezium implements Polygon {
     private float perimeter;    //периметр
     private float leftAngleOfBottom;//левый угол основания
     private int angleRotation; //угол поворота фигуры
+    private float centerX;     //координата Х центра фигуры
+    private float centerY;    //координата У центра фигуры
     
     /*  TODO (Проверка№1 ЛР№2)
         - Трапеция, как и любая фигура может иметь координаты на полскости и угол поворота!
@@ -54,6 +56,10 @@ public class Trapezium implements Polygon {
         
         //задаем угол поворота фигуры
         angleRotation = setRotation();
+        
+        //задаем координаты центра фигуры
+        centerX = setCoordinate();
+        centerY = setCoordinate();
     }
     
     //задаем угол поворота фигуры
@@ -61,6 +67,23 @@ public class Trapezium implements Polygon {
         Randome rand = new Randome(360);
         int angle = rand.setNumber();
         return angle;
+    }
+    
+    //задаем значение координаты, которая вызывает метод
+    public float setCoordinate() {
+        Randome rand = new Randome(10);
+        float coordinate = rand.setNumber();
+        return coordinate;
+    }
+
+    @Override
+    public float getX() {
+        return centerX;
+    }
+
+    @Override
+    public float getY() {
+        return centerY;
     }
     
     @Override
@@ -75,7 +98,7 @@ public class Trapezium implements Polygon {
 
     @Override
     public int getRotation() {
-        return 0;
+        return angleRotation;
     }
     /*  TODO (Проверка№1 ЛР№2)
         - Возращаемый угол поворота фигуры трапеции может лежат в диапазоне от 0 до 360!

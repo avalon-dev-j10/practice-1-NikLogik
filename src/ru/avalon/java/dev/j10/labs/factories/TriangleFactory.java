@@ -15,12 +15,12 @@ import ru.avalon.java.dev.j10.labs.shapes.Triangle;
  */
 public class TriangleFactory implements ShapeFactory{
     
-    Randome randNum = new Randome(90);
-    
+    Randome randNum = new Randome(90); //объект Рандом для создания длин сторон
+    Randome randAngle = new Randome(179);   //объект Рандом для создания угла между сторонами
     
     @Override
     public Shape getInstance(){
-        return new Triangle(randNum.setNumber(), randNum.setNumber(), randNum.setNumber());
+        return new Triangle(randNum.setNumber(), randNum.setNumber(), randAngle.setNumber());
     }    
     /*  TODO (Проверка№1 ЛР№2)
         - Ошибка создания сторон треугольника. Если ты рандомно создаешь три стороны

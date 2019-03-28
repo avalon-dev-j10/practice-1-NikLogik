@@ -25,6 +25,10 @@ public class Main {
    
         System.out.println("Фигура с максимальной площадью: " + shapeMaxArea.getClass().getSimpleName());
         System.out.println("Значение площади: " + shapeMaxArea.getArea());
+        
+        for(Shape shape : shapes){
+            System.out.println(shape.getArea() + " " + shape.toString());
+        }
         /*
          * TODO: Выполнить действия над массивом 'shapes'
          *
