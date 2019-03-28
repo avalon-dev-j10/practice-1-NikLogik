@@ -30,7 +30,10 @@ public class Trapezium implements Polygon {
     private float leftAngleOfBottom;//левый угол основания
     private int angleRotation; //угол поворота фигуры
     
-    
+    /*  TODO (Проверка№1 ЛР№2)
+        - Трапеция, как и любая фигура может иметь координаты на полскости и угол поворота!
+        В данном классе, отсутствует один интерфейс!
+    */
     
     public Trapezium(float topSide, float bottomSide, float height, float leftAngleOfBottom){
         this.topSide = topSide;
@@ -74,5 +77,8 @@ public class Trapezium implements Polygon {
     public int getRotation() {
         return 0;
     }
+    /*  TODO (Проверка№1 ЛР№2)
+        - Возращаемый угол поворота фигуры трапеции может лежат в диапазоне от 0 до 360!
+    */
         
 }

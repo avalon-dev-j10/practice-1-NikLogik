@@ -28,6 +28,12 @@ public class Rectangle implements Polygon {
     private float perimeter;    //периметр
     private int angleRotation; //угол поворота фигуры
     
+    /*  TODO (Проверка№1 ЛР№2)
+        - Прямоугольник, как и любая фигура может иметь координаты на полскости и угол поворота!
+        В данном классе, отсутствует один интерфейс!
+        - Прямоугольник по своей природе, фигура у которой противоположные стороны равны. Оставить всего две стороны!
+    */
+    
     public Rectangle(float topSide, float leftSide){
         this.topSide = this.bottomSide = topSide;
         this.leftSide = this.rightSide = leftSide;

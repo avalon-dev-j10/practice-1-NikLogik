@@ -33,7 +33,15 @@ public class Triangle implements Polygon {
     private float perimeter;        //периметр Треугольника
     private int angleRotation;      //угол поворота фигуры
     
+    /*  TODO (Проверка№1 ЛР№2)
+        - Нелогическое название сторон треугольника! Основанием может быть любая
+        сторона треугольника, если его перевернуть, правая сторона может оказаться слева!
+        Исправить названия, как на уроках геометрии в Школе!
+        - Треугольник, как и любая фигура может иметь координаты на полскости и угол поворота!
+        В данном классе, отсутствует один интерфейс!
     
+    */
+        
     public Triangle(float bottomSide, float leftSide, float rightSide){
         this.bottomSide = bottomSide;
         this.leftSide = leftSide;
@@ -46,12 +54,17 @@ public class Triangle implements Polygon {
         float firstPartOfFormula = halfPerimeter * (halfPerimeter - leftSide) * (halfPerimeter - rightSide) * (halfPerimeter - bottomSide);
         height = (2/bottomSide) * (float) Math.sqrt(firstPartOfFormula);
         
+        /*  TODO (Проверка№1 ЛР№2)
+            - Высота лишний параметр, любую высоту можно вычислить, зная три стороны
+            треугольника. Удалить высоту!
+            - Площадь находить сразу по формуле Герона, минуя высоту!
+        */
+        
         //вычисляем площадь Треугольника
         area = (bottomSide * height) / 2;
         
         //задаем угол поворота фигуры
         angleRotation = setRotation();
-        
     }
     
     //задаем угол поворота фигуры
@@ -75,5 +88,9 @@ public class Triangle implements Polygon {
     public int getRotation() {
         return 0;
     }
+    
+    /*  TODO (Проверка№1 ЛР№2)
+        - Возращаемый угол поворота фигуры треугольника может лежат в диапазоне от 0 до 360!
+    */
         
 }
