@@ -1,6 +1,13 @@
 package ru.avalon.java.dev.j10.labs.factories;
 
+import java.util.Random;
+import ru.avalon.java.dev.j10.labs.shapes.Circle;
+import ru.avalon.java.dev.j10.labs.shapes.Ellipse;
+import ru.avalon.java.dev.j10.labs.shapes.Rectangle;
+import ru.avalon.java.dev.j10.labs.shapes.Rhombus;
 import ru.avalon.java.dev.j10.labs.shapes.Shape;
+import ru.avalon.java.dev.j10.labs.shapes.Trapezium;
+import ru.avalon.java.dev.j10.labs.shapes.Triangle;
 
 /**
  * "Фабрика" фигур, возвращающая фигуры случайной природы.
@@ -13,6 +20,7 @@ import ru.avalon.java.dev.j10.labs.shapes.Shape;
  */
 public class RandomShapeFactory implements ShapeFactory {
 
+    
     /*
      * TODO: Реализуйте класс 'RandomShapeFactory'
      * Подумайте о том, какой может быть реализация.
@@ -20,6 +28,8 @@ public class RandomShapeFactory implements ShapeFactory {
      * Как можно улучшить реализацию, создав специализированные
      * фабрики, создающие конкретные подвиды фигур?
      */
+    
+    
 
     /**
      * Возвращает случайную фигуру.
@@ -36,12 +46,31 @@ public class RandomShapeFactory implements ShapeFactory {
      *
      * @return новый экземпляр типа {@link Shape}.
      */
+    
+    Shape shape;
+    
+    @Override
     public Shape getInstance() {
+        
+       Randome typeShape = new Randome(5);
+       switch(typeShape.setNumber()){
+           case 0:
+               return shape = new RhombusFactory().getInstance();
+           case 1:
+               return shape = new RectangleFactory().getInstance();
+           case 2:
+               return shape = new TriangleFactory().getInstance();
+           case 3:
+               return shape = new TrapeziumFactory().getInstance();
+           case 4:
+               return shape = new CircleFactory().getInstance();
+        }
+         
 
         /*
          * TODO: Реализовать метод 'getInstance()' класса 'RandomShapeFactory'
          */
-
-        return null;
+        return shape;
+        
     }
 }
