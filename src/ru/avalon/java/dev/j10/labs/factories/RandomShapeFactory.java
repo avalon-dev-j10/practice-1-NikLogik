@@ -1,7 +1,5 @@
 package ru.avalon.java.dev.j10.labs.factories;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Random;
 import ru.avalon.java.dev.j10.labs.shapes.Circle;
 import ru.avalon.java.dev.j10.labs.shapes.Ellipse;

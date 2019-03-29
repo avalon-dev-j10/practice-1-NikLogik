@@ -27,7 +27,7 @@ public class Main {
         System.out.println("Значение площади: " + shapeMaxArea.getArea());
         
         for(Shape shape : shapes){
-            System.out.println(shape.getArea() + " " + shape.toString());
+            System.out.println("S = " + shape.getArea() + " " + shape.getClass().getSimpleName());
         }
         /*
          * TODO: Выполнить действия над массивом 'shapes'
